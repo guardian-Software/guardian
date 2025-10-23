@@ -1,2 +1,2 @@
 # guardian
-Open Source Civilian Government Issue Reporting Tool
+Open Source Civilian-Government Issue Reporting Tool
