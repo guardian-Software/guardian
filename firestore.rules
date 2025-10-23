@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Authenticated users can read, create, or update their own user document
+    match /users/{userId} {
+      allow read, create, update: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Allow unauthenticated users to create documents in the "api_logs" collection
+    match /zones/{zoneId} {
+      allow read: if true;  // open create access
+    }
+
+    // Allow anyone (including unauthenticated) to read documents in the "reports" collection
+    match /reports/{reportId} {
+      allow get, list: if true;  // read access for anyone
+      allow create: if request.auth != null;
+    }
+
+    match /problemReports/{reportId} {
+      allow get, list: if true;  // read access for anyone
+      allow create: if request.auth != null;
+    }
+
+    // Catch-all rule for other collections - authenticated users can read/write
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+
+  }
+}
