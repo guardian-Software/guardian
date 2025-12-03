@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "help": "Ajuda",
+    "legal": "Legal",
+    "reportProblem": "Reportar um Problema",
+    "exit": "Sair",
+    "language": "Idioma",
+    "english": "Inglês",
+    "spanish": "Espanhol",
+    "portuguese": "Português"
+  }
+}
